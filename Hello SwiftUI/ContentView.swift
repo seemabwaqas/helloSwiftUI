@@ -8,9 +8,78 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    let list = Hike.all()
+    
+    @State var buttonText = 0
+    @State var welcomeSwiftText = "Welcome to SwiftUI"
+    @State var helloSwiftText = "Hello, SwiftUI"
+    @State var tapMeText = "Tap Me!"
+    @State var cherryImageName = "cherry"
+    @State var lemonImageName = "lemon"
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        
+        
+        ZStack {
+            
+            Color(.systemPink)
+            
+            VStack{
+                ScrollView{
+                
+                
+                List(self.list, id: \.name){hike in
+                    Text(hike.name)
+                }
+                .font(.title)
+                
+                
+                Image(cherryImageName)
+                    .resizable()
+                    .scaledToFit()
+                
+                Text(helloSwiftText)
+                    .padding()
+                    .font(.largeTitle)
+                    .foregroundColor(.white)
+                    .shadow(radius: 5)
+                
+                
+                Button(action: {
+                    buttonText = buttonText + 1
+                    helloSwiftText = welcomeSwiftText
+                    tapMeText = "Tapped Times: "
+                    cherryImageName = lemonImageName
+                    
+                }, label: {
+                    VStack{
+                        Text(tapMeText)
+                        
+                    }
+                    .padding(.leading, 24)
+                    .padding(.trailing, 24)
+                    .padding()
+                    .background(Color.yellow)
+                    .foregroundColor(.black)
+                    .cornerRadius(12)
+                    .font(.title)
+                    .shadow(radius: 5)
+                    
+                })
+                
+                if(buttonText > 0){
+                    Text("\(buttonText)")
+                        .padding()
+                        .background(Color.white)
+                        .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                    
+                    
+                }
+            }
+        }
+        .ignoresSafeArea()
+        }
     }
 }
 
