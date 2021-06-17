@@ -28,24 +28,29 @@ struct ContentView: View {
             VStack{
                 ScrollView{
                 
-                
+                //MARK: - List in SwiftUI
                 List(self.list, id: \.name){hike in
                     Text(hike.name)
                 }
                 .font(.title)
-                
-                
+                    
+                    
+                    
+                //MARK: - Image in SwiftUI
                 Image(cherryImageName)
                     .resizable()
                     .scaledToFit()
                 
+                    
+                //MARK: - Text in SwiftUI
                 Text(helloSwiftText)
                     .padding()
                     .font(.largeTitle)
                     .foregroundColor(.white)
                     .shadow(radius: 5)
                 
-                
+                    
+                //MARK: - Button in SwiftUI
                 Button(action: {
                     buttonText = buttonText + 1
                     helloSwiftText = welcomeSwiftText
@@ -67,7 +72,8 @@ struct ContentView: View {
                     .shadow(radius: 5)
                     
                 })
-                
+                    
+                //MARK: - Conditional Text in SwiftUI
                 if(buttonText > 0){
                     Text("\(buttonText)")
                         .padding()
